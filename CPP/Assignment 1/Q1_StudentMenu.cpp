@@ -11,15 +11,31 @@ private:
     char grade;
 
 public:
-    void setName(string n){ name = n; }
-    void setRollNumber(int r){ rollNumber = r; }
-    void setMarks(float m){ marks = m; }
-    void setGrade(char g){ grade = g; }
+    void setName(string n){ 
+        name = n; 
+    }
+    void setRollNumber(int r){ 
+        rollNumber = r; 
+    }
+    void setMarks(float m){ 
+        marks = m; 
+    }
+    void setGrade(char g){
+        grade = g; 
+    }
 
-    string getName(){ return name; }
-    int getRollNumber(){ return rollNumber; }
-    float getMarks(){ return marks; }
-    char getGrade(){ return grade; }
+    string getName(){
+        return name; 
+    }
+    int getRollNumber(){
+        return rollNumber; 
+    }
+    float getMarks(){
+        return marks; 
+    }
+    char getGrade(){
+        return grade; 
+    }
 
     void calculateGrade(){
         if(marks >= 90) grade = 'A';
