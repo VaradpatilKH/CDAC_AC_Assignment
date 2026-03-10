@@ -1,4 +1,4 @@
-# OOP using C++ – Assignment 2
+# CPP Assignment 2
 
 This repository contains solutions for **Assignment 2** of **Object Oriented Programming using C++**.
 
@@ -13,5 +13,3 @@ This repository contains solutions for **Assignment 2** of **Object Oriented Pro
 * `Q6_EmployeeInitializer.cpp` – Employee class using initializer list
 * `Theory_Answers.md` – Answers to theory questions
 
-**Language:** C++
-**Author:** Varad Patil
