@@ -1,0 +1,265 @@
+EXERCISE 1
+
+- 1
+create table SEMP(EMPNO char(4), EMPNAME char(20), BASIC float, DEPTNO char(2), DEPTHEAD char(4));
+
+- 2
+create table SDEPT(DEPTNO char(2), DEPTNAME char(15));
+
+- 3
+insert into SDEPT values('10','Development'),
+    -> ('20','Training');
+
+- 4
+insert into SEMP values('0001','SUNIL',6000,'10',null),
+    -> ('0002','HIREN',8000,'20',null),
+    -> ('0003','ALI',4000,'10','0001'),
+    -> ('0004','GEORGE',6000,null,'0002');
+
+- 5
+create table S(`S#` char(2),Sname varchar(20),Status int,City varchar(20));
+
+create table P(`P#` char(2),Pname varchar(20),Color varchar(10),Weight int,City varchar(20));
+
+create table J(`J#` char(2),Jname varchar(20),City varchar(20));
+
+create table SPJ(`S#` char(2),`P#` char(2),`J#` char(2),Qty int);
+
+
+insert into S values
+    -> ('S1','Rahul',20,'London'),
+    -> ('S2','Priya',10,'Paris'),
+    -> ('S3','Amit',30,'Paris'),
+    -> ('S4','Sneha',20,'London'),
+    -> ('S5','Arjun',30,'Athens');
+
+insert into P values
+    -> ('P1','Screw','Red',12,'London'),
+    -> ('P2','Bolt','Green',17,'Paris'),
+    -> ('P3','Spring','Blue',17,'Rome'),
+    -> ('P4','Shaft','Red',14,'London'),
+    -> ('P5','Cam','Blue',12,'Paris'),
+    -> ('P6','Cog','Red',19,'London');
+
+insert into J values
+    -> ('J1','Console','Paris'),
+    -> ('J2','Engine','Rome'),
+    -> ('J3','Sensor','Athens'),
+    -> ('J4','Panel','Athens'),
+    -> ('J5','Control','London');
+
+insert into SPJ values
+    -> ('S1','P1','J1',200),
+    -> ('S1','P1','J4',700),
+    -> ('S2','P3','J1',400),
+    -> ('S2','P3','J2',200),
+    -> ('S3','P4','J3',300),
+    -> ('S4','P5','J4',500);
+
+select * from S;
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S1   | Rahul |     20 | London |
+		| S2   | Priya |     10 | Paris  |
+		| S3   | Amit  |     30 | Paris  |
+		| S4   | Sneha |     20 | London |
+		| S5   | Arjun |     30 | Athens |
+		+------+-------+--------+--------+
+
+- 6
+select `S#`, Sname from S;
+		+------+-------+
+		| S#   | Sname |
+		+------+-------+
+		| S1   | Rahul |
+		| S2   | Priya |
+		| S3   | Amit  |
+		| S4   | Sneha |
+		| S5   | Arjun |
+		+------+-------+
+
+- 7
+select Pname, Color from P
+    -> where City = 'London';
+		+-------+-------+
+		| Pname | Color |
+		+-------+-------+
+		| Screw | Red   |
+		| Shaft | Red   |
+		| Cog   | Red   |
+		+-------+-------+
+
+- 8
+select * from S
+    -> where City = 'London';
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S1   | Rahul |     20 | London |
+		| S4   | Sneha |     20 | London |
+		+------+-------+--------+--------+
+
+- 9
+select * from S
+    -> where City = 'Paris' or City = 'Athens';
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S2   | Priya |     10 | Paris  |
+		| S3   | Amit  |     30 | Paris  |
+		| S5   | Arjun |     30 | Athens |
+		+------+-------+--------+--------+
+
+- 10
+select * from J
+    -> where City = 'Athens';
+		+------+--------+--------+
+		| J#   | Jname  | City   |
+		+------+--------+--------+
+		| J3   | Sensor | Athens |
+		| J4   | Panel  | Athens |
+		+------+--------+--------+
+
+- 11
+select Pname from P
+    -> where Weight between 12 and 14;
+		+-------+
+		| Pname |
+		+-------+
+		| Screw |
+		| Shaft |
+		| Cam   |
+		+-------+
+
+- 12
+select * from S
+    -> where Status >= 20;
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S1   | Rahul |     20 | London |
+		| S3   | Amit  |     30 | Paris  |
+		| S4   | Sneha |     20 | London |
+		| S5   | Arjun |     30 | Athens |
+		+------+-------+--------+--------+
+
+- 13
+select *
+    -> from S
+    -> where City <> 'London';
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S2   | Priya |     10 | Paris  |
+		| S3   | Amit  |     30 | Paris  |
+		| S5   | Arjun |     30 | Athens |
+		+------+-------+--------+--------+
+
+- 14
+select distinct City from S;
+		+--------+
+		| City   |
+		+--------+
+		| London |
+		| Paris  |
+		| Athens |
+		+--------+
+
+- 15
+select Weight, Weight*1000 as Milligrams, Weight/1000 as Kilograms from P;
+		+--------+------------+-----------+
+		| Weight | Milligrams | Kilograms |
+		+--------+------------+-----------+
+		|     12 |      12000 |    0.0120 |
+		|     17 |      17000 |    0.0170 |
+		|     17 |      17000 |    0.0170 |
+		|     14 |      14000 |    0.0140 |
+		|     12 |      12000 |    0.0120 |
+		|     19 |      19000 |    0.0190 |
+		+--------+------------+-----------+
+
+
+
+EXERCISE 2
+
+- 1
+select * from S
+    -> order by City desc;
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S2   | Priya |     10 | Paris  |
+		| S3   | Amit  |     30 | Paris  |
+		| S1   | Rahul |     20 | London |
+		| S4   | Sneha |     20 | London |
+		| S5   | Arjun |     30 | Athens |
+		+------+-------+--------+--------+
+
+- 2
+select * from P
+    -> order by City asc, Pname asc;
+		+------+--------+-------+--------+--------+
+		| P#   | Pname  | Color | Weight | City   |
+		+------+--------+-------+--------+--------+
+		| P6   | Cog    | Red   |     19 | London |
+		| P1   | Screw  | Red   |     12 | London |
+		| P4   | Shaft  | Red   |     14 | London |
+		| P2   | Bolt   | Green |     17 | Paris  |
+		| P5   | Cam    | Blue  |     12 | Paris  |
+		| P3   | Spring | Blue  |     17 | Rome   |
+		+------+--------+-------+--------+--------+
+
+- 3
+select * from S
+    -> where Status between 10 and 20;
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S1   | Rahul |     20 | London |
+		| S2   | Priya |     10 | Paris  |
+		| S4   | Sneha |     20 | London |
+		+------+-------+--------+--------+
+
+- 4
+select Pname, Weight from P
+    -> where Weight NOT between 10 and 15;
+		+--------+--------+
+		| Pname  | Weight |
+		+--------+--------+
+		| Bolt   |     17 |
+		| Spring |     17 |
+		| Cog    |     19 |
+		+--------+--------+
+
+- 5
+select Pname from P
+    -> where Pname like 'S%';
+		+--------+
+		| Pname  |
+		+--------+
+		| Screw  |
+		| Spring |
+		| Shaft  |
+		+--------+
+- 6
+select * from S
+    -> where City like 'L%';
+		+------+-------+--------+--------+
+		| S#   | Sname | Status | City   |
+		+------+-------+--------+--------+
+		| S1   | Rahul |     20 | London |
+		| S4   | Sneha |     20 | London |
+		+------+-------+--------+--------+
+
+- 7
+select * from J
+    -> where Jname like '__n%';
+		+------+---------+--------+
+		| J#   | Jname   | City   |
+		+------+---------+--------+
+		| J1   | Console | Paris  |
+		| J3   | Sensor  | Athens |
+		| J4   | Panel   | Athens |
+		| J5   | Control | London |
+		+------+---------+--------+
